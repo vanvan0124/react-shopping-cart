@@ -7,5 +7,11 @@
 
 .container::after {
     content: "";
-    width: 370px;
+    width: 370px;   
+  }
+
+  .loadingMeals {
+    margin-top: 100px;
+    text-align: center;
+    color: white;
   }

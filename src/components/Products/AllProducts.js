@@ -4,6 +4,7 @@ import style from './AllProducts.module.css'
 
 
 const AllProducts = () => {
+const [mealsLoading, setMealsLoading] = useState(true)  
 
 const [products, setProducts] = useState([]);
 useEffect(() => {
@@ -21,6 +22,7 @@ useEffect(() => {
         })
      }
      setProducts(loadedProducts)
+     setMealsLoading(false)
     }
 
     fetchProducts()  
@@ -33,7 +35,15 @@ const productList = products.map((product) => <ProductItem
     price ={product.price}
     />  )
 
+if(mealsLoading) {
   return (
+          <section className={style.loadingMeals}>
+            <p>Loading...</p>
+          </section>
+  )
+}
+
+return (
     <section className={style.container}>
         {productList} 
     </section>
