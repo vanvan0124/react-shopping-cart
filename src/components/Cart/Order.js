@@ -39,8 +39,12 @@ const confirmHandler = (event) => {
 
         if(!formIsValid){
             return;
-        }
-
+        } 
+        props.onConfirmOrder({
+            name:enteredName,
+            address: enteredAddress,
+            phone: enteredPhone
+        })    
 
     }
 

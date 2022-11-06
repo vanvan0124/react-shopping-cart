@@ -4,6 +4,7 @@ import style from './Cart.module.css'
 import CartContext from '../../store/cart-context'
 import CartItem from './CartItem'
 import Order from './Order'
+import Swal from 'sweetalert2'
 
 const Cart = (props) => {
 const [order, setOrder] = useState(false)
@@ -20,6 +21,22 @@ const cartItemAddHandler = item => {
 
 const orderHandler = () => {
   setOrder(true)
+}
+
+const confirmOrderHandler = userData => {
+  fetch('https://react-db-eed03-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json', {
+    method : 'POST',
+    body: JSON.stringify({
+      user : userData,
+      orderedItems: cartCtx.items
+    })
+  })
+  Swal.fire({
+    title: 'Successful',
+    icon: 'success',
+    text: 'You place your order!'
+  })
+
 }
 
 const cartItems =   <ul className={style['cart-items']}>{cartCtx.items.map((item) => <CartItem 
@@ -40,7 +57,7 @@ const cartItems =   <ul className={style['cart-items']}>{cartCtx.items.map((item
             <span>Total</span>
             <span>{totalAmount}</span>
         </div>
-        {order && <Order onCancel={props.onClose} />}
+        {order && <Order onCancel={props.onClose} onConfirmOrder = {confirmOrderHandler} />}
         {!order && <div className={style.actions}> 
             <button className={style['button--alt']} onClick={props.onClose}>Close</button>
             {hasItems && <button className={style.button} onClick={orderHandler}>Order</button>}
