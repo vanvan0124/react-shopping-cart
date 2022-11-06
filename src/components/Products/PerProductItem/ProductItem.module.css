@@ -1,0 +1,32 @@
+
+.card {
+    background:  white;
+    width: 270px;
+    height: 420px;
+    margin: 50px;
+    border-radius: 10px;
+    text-align: center;
+    
+
+}
+
+.img {
+    
+    height: 270px;
+    margin-bottom: 15px;
+    background-image: url('https://i.pinimg.com/736x/ad/15/d7/ad15d7bcfc2aa79bc8c9cc6f8004e347.jpg');
+    background-size: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.card:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+    
+}
+.price {
+    font-style: italic;
+    padding-bottom: 5px;
+    color: rgb(45, 48, 202);
+}
+

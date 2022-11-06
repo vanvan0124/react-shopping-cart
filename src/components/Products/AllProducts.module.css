@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    flex-wrap: wrap;
+}
+
+.container::after {
+    content: "";
+    width: 370px;
+  }
